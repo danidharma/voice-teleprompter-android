@@ -126,15 +126,13 @@ BUNDLED['zh'] = ('ZH', 'speech-packs-3', 'Apache-2.0', 'Zipformer zh 14M 2023-02
 
 # Indonesian: streaming Zipformer2 by spacewave (MIT; BPE units, UPPER CASE; the model card gives 9.8% WER on average over
 # YODAS, Common Voice, FLEURS and LibriVox-ID with greedy search). The chunk-32 variant steps 0.64 s. The repository's
-# commit and the SHA-256 of the three ONNX files were not known when this recipe was written (only tokens.txt was
-# checked): run `python tools/speech-packs/build.py OUT --only id --allow-unpinned`, check the printed hashes against
-# the Hugging Face page, put them below and replace `main` with the commit they were read at.
+# files are pinned by SHA-256 (read on 2026-11-08); `main` is followed, so a changed upload stops the build.
 _ID = 'https://huggingface.co/spacewave/sherpa-onnx-streaming-zipformer2-id/resolve/main'
 _ID_STEM = 'iter-100000-avg-15-chunk-32-left-256'
 BUNDLED['id'] = ('ID', 'speech-packs-4', 'MIT', 'Zipformer2 id spacewave chunk-32 int8', 0.64, [
-    ('encoder.int8.onnx', f'{_ID}/encoder-{_ID_STEM}.int8.onnx', None),
-    ('decoder.onnx', f'{_ID}/decoder-{_ID_STEM}.onnx', None),
-    ('joiner.int8.onnx', f'{_ID}/joiner-{_ID_STEM}.int8.onnx', None),
+    ('encoder.int8.onnx', f'{_ID}/encoder-{_ID_STEM}.int8.onnx', '3a6f85f5d199ad0d495562988af017a75d4ae81b51126db240d959b065d6eaad'),
+    ('decoder.onnx', f'{_ID}/decoder-{_ID_STEM}.onnx', 'e4b0c49fdd0a2da91ba99a2d2bbf4e392149c19e6abb4d4bc144c5d5f7d7a3e8'),
+    ('joiner.int8.onnx', f'{_ID}/joiner-{_ID_STEM}.int8.onnx', '4b89d96292460a92dedcb39e0b17904f10dbad335a8ab11015e567b4864102e0'),
     ('tokens.txt', f'{_ID}/tokens.txt', 'f0b6f5bf602d96f60d79bb17192c51eeffb6189250f132b1dfdf72b130d66968'),
 ], _NOTICE.replace('The same model files that the full Suflyor APK carries inside, unchanged, for the lite APK.', 'The model files, unchanged.').format(
     name='Indonesian', credits='Model: sherpa-onnx-streaming-zipformer2-id by spacewave (https://huggingface.co/spacewave/sherpa-onnx-streaming-zipformer2-id), a streaming Zipformer2 transducer for Indonesian, chunk-32 variant: int8 encoder and joiner, float32 decoder. License: MIT.'))

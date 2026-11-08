@@ -30,7 +30,7 @@ jobs:
       # Downloads the model from Hugging Face, prints the SHA-256 of its files, writes the zip and adds the Indonesian
       # entry to SpeechPackCatalog.kt, so the app built below accepts exactly this zip.
       - name: Build the Indonesian speech pack
-        run: python3 tools/speech-packs/build.py packs --only id --allow-unpinned
+        run: python3 tools/speech-packs/build.py packs --only id
 
       - name: Build the app
         run: |
