@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Teks yang dipakai bersama oleh beberapa layar dan jendela melayang. -->
+<resources>
+    <string name="common_cd_back">Kembali</string>
+    <string name="common_cd_restart">Kembali ke awal</string>
+    <string name="common_cd_line_back">Baris sebelumnya</string>
+    <string name="common_cd_line_forward">Baris berikutnya</string>
+    <string name="common_cd_pause">Jeda</string>
+    <string name="common_cd_resume">Lanjutkan</string>
+    <string name="common_cd_scroll_mode">Mode gulir: suara, kecepatan, atau bunyi</string>
+    <string name="common_cancel">Batal</string>
+    <string name="common_delete">Hapus</string>
+    <string name="common_untitled">Tanpa judul</string>
+
+    <plurals name="words_count">
+        <item quantity="other">%d kata</item>
+    </plurals>
+
+    <string name="format_typed">teks</string>
+    <string name="format_sample">bawaan</string>
+
+    <string name="key_action_pause">Jeda / lanjutkan</string>
+    <string name="key_action_back">Baris sebelumnya</string>
+    <string name="key_action_forward">Baris berikutnya</string>
+
+    <string name="camera_target_instagram" translatable="false">Instagram</string>
+    <string name="camera_target_tiktok" translatable="false">TikTok</string>
+    <string name="camera_target_camera">Kamera</string>
+    <string name="camera_target_window_only">Hanya jendela</string>
+
+    <string name="start_problem_no_host">Aktifkan layanan aksesibilitas Suflyor atau izinkan tampil di atas aplikasi lain</string>
+    <string name="start_problem_window_failed">Jendela Suflyor tidak bisa ditampilkan. Periksa layanan aksesibilitas Suflyor.</string>
+
+    <string name="speech_lang_auto">Otomatis</string>
+    <string name="speech_lang_ru" translatable="false">Русский</string>
+    <string name="speech_lang_en" translatable="false">English</string>
+    <string name="speech_lang_tr" translatable="false">Türkçe</string>
+</resources>

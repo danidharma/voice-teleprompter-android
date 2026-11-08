@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Suflyor</string>
+    <string name="a11y_label">Suflyor: jendela melayang dan suara</string>
+    <string name="a11y_description">Memungkinkan Suflyor mendengar suara Anda saat aplikasi lain merekam video, dan menampilkan teks Anda di atas kamera. Hanya bekerja selama sesi Suflyor: layanan ini melihat aplikasi mana yang ada di layar (untuk log) dan menerima tombol volume, remote Bluetooth, serta keyboard yang diatur di Pengaturan. Layanan ini tidak membaca isi layar. Tidak ada data yang keluar dari ponsel Anda — aplikasi ini tidak punya akses internet.</string>
+</resources>

@@ -27,6 +27,10 @@ class WordNorm private constructor(
     private val prefixes: String = "",
     /** Each character is a syllable (Korean Hangul): two characters are already a full word. */
     private val syllabic: Boolean = false,
+    /** Spellings of one spoken word, mapped to one form ("gak", "enggak", "ngga" -> "nggak"): the model prints any of them. */
+    private val aliases: Map<String, String> = emptyMap(),
+    /** Prefixes cut off before the stem is taken (Indonesian "mem-", "ber-", "di-"), longest first. */
+    private val stemPrefixes: List<String> = emptyList(),
 ) : PackRules {
     override val wordRegex: Regex get() = WORD
 
@@ -65,7 +69,8 @@ class WordNorm private constructor(
         val lower = Normalizer.normalize(raw, Normalizer.Form.NFC).lowercase(locale)
         val sb = StringBuilder(lower.length)
         for (ch in lower) if (ch.isLetterOrDigit()) sb.append(ch)
-        return sb.toString()
+        val word = sb.toString()
+        return aliases[word] ?: word
     }
 
     /** Normalized words of a text: apostrophes and hyphens split ("l'homme" -> l, homme; "Foi-se" -> foi, se). */
@@ -98,7 +103,10 @@ class WordNorm private constructor(
     /** Groups word forms for the frequency weights: the first five letters without accents ("cantamos", "cantava"). */
     override fun stem(word: String): String {
         if (syllabic) return if (word.length > 2) word.substring(0, 2) else word
-        val w = fold(word)
+        val folded = fold(word)
+        // "membaca" and "dibaca" are one word for the frequency weights: the prefix goes, a root of 4+ letters stays.
+        val cut = stemPrefixes.firstOrNull { folded.startsWith(it) && folded.length - it.length >= 4 }
+        val w = if (cut != null) folded.substring(cut.length) else folded
         return if (w.length > 5) w.substring(0, 5) else w
     }
 
@@ -321,6 +329,60 @@ class WordNorm private constructor(
             script = Character.UnicodeScript.HEBREW,
             foldMap = mapOf('ך' to 'כ', 'ם' to 'מ', 'ן' to 'נ', 'ף' to 'פ', 'ץ' to 'צ'),
             prefixes = "והבלמשכ",
+        )
+
+        /** "canonical: variant variant" groups to a map from each variant to its canonical spelling. */
+        private fun aliasMap(vararg groups: String): Map<String, String> {
+            val map = HashMap<String, String>()
+            for (g in groups) {
+                val (canonical, variants) = g.split(":").map { it.trim() }
+                for (v in variants.split(Regex("\\s+"))) if (v.isNotEmpty()) map[v] = canonical
+            }
+            return map
+        }
+
+        /**
+         * Indonesian, from the streaming Zipformer2 model of spacewave (BPE units, UPPER CASE, trained on YouTube
+         * captions, Common Voice, FLEURS and LibriVox). It prints numbers as words and spells casual speech the way
+         * the captions did, so one spoken word comes in several spellings (aliases). Reduplication keeps its hyphen
+         * ("anak-anak"), which splits like any other, and so does the recognizer's "anak anak".
+         */
+        val ID = WordNorm(
+            code = "id",
+            locale = Locale.forLanguageTag("id"),
+            stop = """
+                yang dan di ke dari ini itu untuk dengan pada adalah akan atau juga tidak nggak ada saya aku kamu kau
+                dia ia kita kami mereka anda gue lu sudah belum telah sedang masih bisa dapat harus mau lagi lebih
+                sangat sekali saja ya nih tuh deh sih dong kok kan lah pun oleh sebagai dalam karena kalau jika maka
+                tapi tetapi namun bahwa agar supaya sehingga ketika saat sebuah para seperti hanya semua setiap jadi
+                sama
+            """,
+            fillers = "em emm hm hmm mm mmm ehm uh uhm aa aaa ee eee eeh ehh",
+            softFillers = "eh ah e anu ya kan sih deh dong nih tuh gitu",
+            numberWords = """
+                nol kosong satu dua tiga empat lima enam tujuh delapan sembilan sepuluh sebelas belas puluh seratus
+                ratus seribu ribu juta miliar milyar triliun koma persen
+            """,
+            abbreviations = "bpk bp sdr sdri dr drs dra ir prof hj kh jl jln no dll dsb dst dkk yth tgl hlm mr mrs tn ny st",
+            conjunctions = """
+                dan tetapi tapi namun atau karena sebab jika kalau apabila ketika saat sementara sedangkan sehingga
+                agar supaya yang lalu kemudian maka padahal meskipun walaupun serta
+            """,
+            aliases = aliasMap(
+                "nggak: gak ga ngga enggak engga gk nggk",
+                "sudah: udah",
+                "bagaimana: gimana",
+                "begitu: gitu",
+                "saja: aja",
+                "memang: emang",
+                "kalau: kalo",
+                "karena: karna",
+                "tahu: tau",
+                "terus: trus",
+                "gue: gua",
+                "lu: lo loe",
+            ),
+            stemPrefixes = listOf("meng", "meny", "mem", "men", "me", "peng", "peny", "pem", "pen", "pe", "ber", "ter", "per", "di", "ke", "se"),
         )
 
         val IT = WordNorm(

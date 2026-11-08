@@ -25,6 +25,14 @@ Kroko models recognize in steps of 1.28 s (the built-in Russian, English and Tur
 - **Nemotron 3.5 ASR streaming 0.6B** (NVIDIA, int8, 320 ms chunks, 35 languages, 680 MB): 8.3% WER on six Portuguese clips, the same as Kroko. On the S24 FE: load 2.3 s, real-time factor 0.255, the tracker reached 364 of 364 words. It runs in real time on this phone, with shorter steps than Kroko, but takes about six times the computing of a Kroko model, so more battery and heat, and a mid-range phone may not keep up. A candidate for a "large universal pack" (Japanese, Hindi, Ukrainian, Polish, Vietnamese and others) if it is measured on a weaker phone first.
 - When the app is in the background, Android gives it slow cores: the same Kroko benches ran at a real-time factor of about 0.2 instead of 0.04. Still five times faster than speech.
 
+## Indonesian (candidate, not yet measured here)
+
+`spacewave/sherpa-onnx-streaming-zipformer2-id`, MIT. A streaming Zipformer2 transducer with 500 BPE units in UPPER CASE (`tokens.txt` checked: 5,403 bytes, no digits, so numbers come out as words). The model card gives 9.8% WER on average with greedy search: YODAS 11.9%, Common Voice 11.6%, FLEURS 9.0%, LibriVox-ID 6.8% (the card's numbers, not ours). The pack uses the `chunk-32-left-256` files: steps of 0.64 s, int8 encoder (70 MB) and joiner, float32 decoder, about 70 MB in all.
+
+Not done yet: pinned SHA-256 and commit for the ONNX files (`tools/speech-packs/build.py --only id --allow-unpinned` prints them), the pack zip itself and its entry in `SpeechPackCatalog`, a bench on the phone (`AsrBench`) with the same protocol as the table above, and the Indonesian rows of this table.
+
+Why not the others: `bookbot/sherpa-onnx-pruned-transducer-stateless7-streaming-id` recognizes IPA phonemes, not words; `indonesian-nlp/multilingual-asr` is wav2vec 2.0, offline, with no ONNX export; Nemotron 3.5 ASR has no Indonesian locale.
+
 ## Chinese, Korean, Hebrew
 
 - The Korean and Chinese recognizers print no spaces, so the tracker follows them character by character (`CharNorm`): every Han character or Hangul syllable is one unit, it matches 14 recent units at once instead of 8, and two different characters still match when they sound the same (Chinese: the same Mandarin reading without tones, from Unihan; Korean: the same initial consonant and vowel).

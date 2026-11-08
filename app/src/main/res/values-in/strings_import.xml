@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Impor berkas dan teks, alur utama aplikasi, layar naskah, dan contoh bawaan. -->
+<resources>
+    <string name="import_error_empty_file">Berkas kosong</string>
+    <string name="import_error_file_too_big">Berkas lebih dari %1$d MB — apakah ini benar-benar naskah?</string>
+    <string name="import_error_text_file_too_big">Berkas teks ini terlalu besar untuk sebuah naskah</string>
+    <string name="import_error_legacy_doc">Format .doc lama (Word 97–2003) tidak didukung. Simpan berkas sebagai .docx atau .pdf.</string>
+    <string name="import_error_encrypted">Dokumen dilindungi kata sandi. Hapus kata sandinya lalu buka lagi.</string>
+    <string name="import_error_unknown_zip">Ini adalah arsip, tetapi bukan berkas DOCX atau ODT</string>
+    <string name="import_error_no_text">Tidak ada teks di dalam berkas</string>
+    <string name="import_error_not_text">Ini bukan berkas teks</string>
+    <string name="import_error_pasted_too_long">Teks terlalu panjang untuk sebuah naskah</string>
+    <string name="import_error_text_too_long_count">Teks terlalu panjang: %1$dK karakter. Suflyor menerima hingga %2$dK.</string>
+    <string name="import_error_text_too_long_max">Teks terlalu panjang: Suflyor menerima hingga %1$dK karakter.</string>
+    <string name="import_error_not_rtf">Ini bukan berkas RTF</string>
+    <string name="import_error_zip_too_many_files">Arsip berisi terlalu banyak berkas</string>
+    <string name="import_error_zip_too_large">Arsip jika diekstrak menjadi terlalu besar</string>
+    <string name="import_error_unsafe">Dokumen rusak atau tidak aman</string>
+    <string name="import_error_not_docx">Tidak ada word/document.xml di dalamnya — ini bukan dokumen Word</string>
+    <string name="import_error_not_odt">Tidak ada content.xml di dalamnya — ini bukan dokumen ODT</string>
+    <string name="import_error_pdf_unsupported">Versi Android ini belum bisa membaca teks PDF. Buka berkas DOCX atau TXT sebagai gantinya.</string>
+    <string name="import_error_pdf_password">PDF dilindungi kata sandi</string>
+    <string name="import_error_pdf_scan">PDF ini tidak punya lapisan teks — tampaknya hasil pindai. Dukungan pindaian menyusul nanti.</string>
+    <string name="import_error_open_failed">Berkas tidak bisa dibuka</string>
+    <string name="import_error_read_failed">Berkas tidak bisa dibaca: %1$s</string>
+    <string name="import_error_generic">Impor gagal</string>
+
+    <string name="import_warning_pdf_paragraphs">Paragraf disusun ulang dari baris-baris PDF — periksa bagaimana teks dipecah.</string>
+    <plurals name="import_warning_docx_tables">
+        <item quantity="other">Dokumen memiliki %1$d tabel: isi selnya ditampilkan berurutan sebagai teks biasa.</item>
+    </plurals>
+
+    <string name="import_title_shared">Teks yang dibagikan</string>
+    <string name="import_title_clipboard">Dari papan klip</string>
+
+    <string name="import_opening">Membuka…</string>
+    <string name="import_nothing">Tidak ada yang bisa diimpor</string>
+    <string name="import_clipboard_empty">Tidak ada teks di papan klip</string>
+
+    <string name="main_mic_blocked">Mikrofon diblokir — aktifkan di izin aplikasi</string>
+    <string name="main_open_app_failed">%1$s tidak bisa dibuka</string>
+    <string name="main_no_words">Tidak ada kata dalam teks</string>
+
+    <string name="script_cd_edit">Ubah</string>
+    <string name="script_stats">≈ %1$s · %2$s · %3$s</string>
+    <string name="script_setup_mic">Izinkan mikrofon agar Suflyor dapat mendengar Anda</string>
+    <string name="script_setup_a11y">Aktifkan layanan Suflyor di Aksesibilitas — jika tidak, Suflyor tidak bisa mendengar Anda saat merekam</string>
+    <string name="script_action_overlay">Di atas kamera</string>
+    <string name="script_action_rehearse">Latihan</string>
+    <string name="script_delete_title">Hapus naskah?</string>
+    <string name="script_delete_message">“%1$s” akan dihapus dari pustaka. Berkas aslinya tetap ada di ponsel Anda.</string>
+
+    <string name="sample_title">Contoh</string>
+    <string name="sample_script"># Naskah contoh\n\nHalo! Hari ini saya akan menunjukkan bagaimana teleprompter ini mengikuti suara Anda dan menggulir teks dengan sendirinya, jadi Anda tidak perlu mengejar tulisan.\n\n**Bacalah beberapa baris**, lihat ke kamera, lalu lirik kembali ke teks. Jika Anda salah ucap dan mengulang kalimat dari awal, teks akan melompat kembali ke awal kalimat itu.\n\n[Jeda, tersenyum] Dan jika Anda diam, teks cukup menunggu Anda.\n\nSekarang coba baca paragraf ini di depan kamera, Instagram, atau TikTok — prompter tetap mendengarkan Anda bahkan saat Anda merekam.</string>
+</resources>

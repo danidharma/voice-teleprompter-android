@@ -22,6 +22,7 @@ enum class SpeechLang(val code: String, val label: String, val rules: PackRules?
     IT("it", "Italiano", WordNorm.IT),
     NL("nl", "Nederlands", WordNorm.NL),
     SV("sv", "Svenska", WordNorm.SV),
+    ID("id", "Bahasa Indonesia", WordNorm.ID),
     HE("he", "עברית", WordNorm.HE),
     KO("ko", "한국어", CharNorm.KO),
     ZH("zh", "中文", CharNorm.ZH);

@@ -14,6 +14,7 @@ import hashlib
 import io
 import json
 import os
+import re
 import struct
 import sys
 import urllib.request
@@ -123,8 +124,24 @@ BUNDLED['zh'] = ('ZH', 'speech-packs-3', 'Apache-2.0', 'Zipformer zh 14M 2023-02
 ], _NOTICE.replace('The same model files that the full Suflyor APK carries inside, unchanged, for the lite APK.', 'The model files, unchanged.').format(
     name='Chinese', credits='Model: 14M-parameter streaming Zipformer for Mandarin by the k2-fsa project, exported by sherpa-onnx (https://huggingface.co/csukuangfj/sherpa-onnx-streaming-zipformer-zh-14M-2023-02-23). License: Apache-2.0.'))
 
-NAMES = {'pt': 'Portuguese', 'es': 'Spanish', 'de': 'German', 'fr': 'French', 'it': 'Italian', 'nl': 'Dutch', 'sv': 'Swedish', 'he': 'Hebrew', 'ko': 'Korean', 'zh': 'Chinese'}
+# Indonesian: streaming Zipformer2 by spacewave (MIT; BPE units, UPPER CASE; the model card gives 9.8% WER on average over
+# YODAS, Common Voice, FLEURS and LibriVox-ID with greedy search). The chunk-32 variant steps 0.64 s. The repository's
+# commit and the SHA-256 of the three ONNX files were not known when this recipe was written (only tokens.txt was
+# checked): run `python tools/speech-packs/build.py OUT --only id --allow-unpinned`, check the printed hashes against
+# the Hugging Face page, put them below and replace `main` with the commit they were read at.
+_ID = 'https://huggingface.co/spacewave/sherpa-onnx-streaming-zipformer2-id/resolve/main'
+_ID_STEM = 'iter-100000-avg-15-chunk-32-left-256'
+BUNDLED['id'] = ('ID', 'speech-packs-4', 'MIT', 'Zipformer2 id spacewave chunk-32 int8', 0.64, [
+    ('encoder.int8.onnx', f'{_ID}/encoder-{_ID_STEM}.int8.onnx', None),
+    ('decoder.onnx', f'{_ID}/decoder-{_ID_STEM}.onnx', None),
+    ('joiner.int8.onnx', f'{_ID}/joiner-{_ID_STEM}.int8.onnx', None),
+    ('tokens.txt', f'{_ID}/tokens.txt', 'f0b6f5bf602d96f60d79bb17192c51eeffb6189250f132b1dfdf72b130d66968'),
+], _NOTICE.replace('The same model files that the full Suflyor APK carries inside, unchanged, for the lite APK.', 'The model files, unchanged.').format(
+    name='Indonesian', credits='Model: sherpa-onnx-streaming-zipformer2-id by spacewave (https://huggingface.co/spacewave/sherpa-onnx-streaming-zipformer2-id), a streaming Zipformer2 transducer for Indonesian, chunk-32 variant: int8 encoder and joiner, float32 decoder. License: MIT.'))
+
+NAMES = {'pt': 'Portuguese', 'es': 'Spanish', 'de': 'German', 'fr': 'French', 'it': 'Italian', 'nl': 'Dutch', 'sv': 'Swedish', 'he': 'Hebrew', 'ko': 'Korean', 'zh': 'Chinese', 'id': 'Indonesian'}
 ZIP_TIME = (2026, 1, 1, 0, 0, 0)
+ALLOW_UNPINNED = False
 
 
 def sha256(path):
@@ -173,11 +190,15 @@ def build_bundled(code, out, cache):
     for name, url, sha in files_in:
         local = f'{code}-{name}'
         path = os.path.join(cache, local)
-        if not (os.path.isfile(path) and sha256(path) == sha):
+        if not (os.path.isfile(path) and (sha is None or sha256(path) == sha)):
             print('download', url)
             urllib.request.urlretrieve(url, path + '.part')
             os.replace(path + '.part', path)
-        if sha256(path) != sha:
+        if sha is None:
+            print(f'UNPINNED {name}: sha256 {sha256(path)}  <- {url}')
+            if not ALLOW_UNPINNED:
+                raise SystemExit('pin the SHA-256 values above in build.py, or pass --allow-unpinned')
+        elif sha256(path) != sha:
             raise SystemExit(f'{url}: wrong SHA-256')
         parts[name] = open(path, 'rb').read()
     manifest = {
@@ -243,7 +264,20 @@ def build(code, out, cache):
     return write_zip(code, enum, RELEASE_OF.get(code, 'speech-packs-1'), 'CC BY-SA', label, files, out)
 
 
+_ENTRY = re.compile(r'SpeechPack\(SpeechLang\.(\w+), (\d+), "([^"]+)", (\d+)L,\s*"([0-9a-f]{64})", "([^"]*)", "([^"]*)", "([^"]*)"\)')
+
+
+def existing_catalog(path):
+    """Entries already in SpeechPackCatalog.kt, so that `--only id` adds Indonesian instead of dropping the others."""
+    if not os.path.isfile(path):
+        return []
+    return [{'enum': e, 'version': int(v), 'file': f, 'bytes': int(b), 'sha256': h, 'model': m, 'license': l, 'release': r}
+            for e, v, f, b, h, m, l, r in _ENTRY.findall(open(path, encoding='utf-8').read())]
+
+
 def write_catalog(packs, path):
+    built = {p['enum'] for p in packs}
+    packs = [p for p in existing_catalog(path) if p['enum'] not in built] + list(packs)
     lines = [
         'package com.olerast.suflyor.speech',
         '',
@@ -254,7 +288,7 @@ def write_catalog(packs, path):
         '    val PACKS: List<SpeechPack> = listOf(',
     ]
     for p in packs:
-        lines.append(f'        SpeechPack(SpeechLang.{p["enum"]}, {PACK_VERSION}, "{p["file"]}", {p["bytes"]}L,')
+        lines.append(f'        SpeechPack(SpeechLang.{p["enum"]}, {p.get("version", PACK_VERSION)}, "{p["file"]}", {p["bytes"]}L,')
         lines.append(f'            "{p["sha256"]}", "{p["model"]}", "{p["license"]}", "{p["release"]}"),')
     lines += ['    )', '}', '']
     open(path, 'w', encoding='utf-8', newline='\n').write('\n'.join(lines))
@@ -266,7 +300,10 @@ def main():
     ap.add_argument('out')
     ap.add_argument('--cache', default=None)
     ap.add_argument('--only', default=','.join(list(SOURCES) + list(BUNDLED)))
+    ap.add_argument('--allow-unpinned', action='store_true', help='build packs whose source files have no pinned SHA-256 yet (prints the hashes)')
     a = ap.parse_args()
+    global ALLOW_UNPINNED
+    ALLOW_UNPINNED = a.allow_unpinned
     cache = a.cache or os.path.join(a.out, 'cache')
     os.makedirs(cache, exist_ok=True)
     packs = [build(code, a.out, cache) for code in a.only.split(',')]

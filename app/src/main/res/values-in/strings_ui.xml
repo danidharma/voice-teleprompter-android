@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Layar aplikasi: pustaka, penyunting, latihan, pengaturan, log. -->
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Pustaka -->
+    <string name="library_title">Naskah</string>
+    <string name="library_search_hint">Cari</string>
+    <string name="library_search_empty">Tidak ditemukan</string>
+    <string name="library_cd_add">Tambah naskah</string>
+    <string name="library_add_title">Naskah baru</string>
+    <string name="library_add_file">Buka berkas</string>
+    <string name="library_add_paste">Tempel dari papan klip</string>
+    <string name="library_add_paste_hint">Teks yang disalin di aplikasi mana pun</string>
+    <string name="library_add_write">Tulis</string>
+    <string name="library_add_write_hint">Ketik atau tempel teks sendiri</string>
+    <string name="library_setup_title">Siapkan perekaman di atas kamera</string>
+    <string name="library_setup_progress" tools:ignore="PluralsCandidate">%1$d dari %2$d selesai: perlu mikrofon dan layanan Suflyor</string>
+
+    <!-- Penyunting -->
+    <string name="editor_title_new">Naskah baru</string>
+    <string name="editor_title_edit">Ubah naskah</string>
+    <string name="editor_action_done">Selesai</string>
+    <string name="editor_hint_title">Judul</string>
+    <string name="editor_hint_text">Tempel atau ketik teks Anda. Mulai setiap paragraf di baris baru.</string>
+    <string name="editor_syntax_help">**tebal** — penekanan · # judul · [catatan] — ditampilkan, tidak dibacakan</string>
+
+    <!-- Latihan: status di samping indikator level -->
+    <string name="rehearsal_status_starting">memulai…</string>
+    <string name="rehearsal_status_idle">tidak mendengarkan</string>
+    <string name="rehearsal_status_paused">jeda</string>
+    <string name="rehearsal_status_auto">kecepatan · %1$d kpm</string>
+    <string name="rehearsal_status_mic_busy">aplikasi lain memakai mikrofon</string>
+    <string name="rehearsal_status_fallback">tidak terdengar — menggulir sendiri</string>
+    <string name="rehearsal_status_listening">mendengarkan</string>
+
+    <!-- Log (baris log selalu berbahasa Inggris di semua bahasa: dipakai di laporan masalah) -->
+    <string name="journal_title">Log</string>
+    <string name="journal_clip_label">Log Suflyor</string>
+    <string name="journal_toast_copied">Log disalin</string>
+    <string name="journal_cd_copy">Salin</string>
+    <string name="journal_share_title">Kirim log</string>
+    <string name="journal_cd_share">Bagikan</string>
+    <string name="journal_cd_clear">Bersihkan</string>
+
+    <string name="stepper_cd_decrease">Kurangi %1$s</string>
+    <string name="stepper_cd_increase">Tambah %1$s</string>
+
+    <!-- Pengaturan -->
+    <string name="settings_title">Pengaturan</string>
+    <string name="settings_action_allow">Izinkan</string>
+    <string name="settings_action_open">Buka</string>
+
+    <string name="settings_section_readiness">Siap merekam di atas kamera</string>
+    <string name="settings_mic_title">Mikrofon</string>
+    <string name="settings_mic_hint">Pilihan terbaik: “Saat aplikasi digunakan”</string>
+    <string name="settings_a11y_title">Layanan aksesibilitas Suflyor</string>
+    <string name="settings_a11y_not_running">Aktif tetapi tidak berjalan — matikan lalu nyalakan lagi</string>
+    <string name="settings_a11y_hint">Tanpa ini, Android membisukan mikrofon saat aplikasi lain merekam video</string>
+    <string name="settings_a11y_restricted">Jika sakelar berwarna abu-abu: Pengaturan → Aplikasi → %1$s → ⋮ → “Izinkan pengaturan terbatas”.</string>
+    <string name="settings_app_info">Info aplikasi</string>
+    <string name="settings_notifications_title">Notifikasi</string>
+    <string name="settings_notifications_hint">Ikon di bayangan notifikasi selama Suflyor mendengarkan, dengan tombol Berhenti</string>
+
+    <string name="settings_section_voice">Mengikuti suara</string>
+    <string name="settings_speech_lang_auto_hint">Otomatis dipilih dari teks naskah — sekarang: %1$s</string>
+    <string name="settings_speech_lang_name_ru">Rusia</string>
+    <string name="settings_speech_lang_name_en">Inggris</string>
+    <string name="settings_speech_lang_name_tr">Turki</string>
+    <string name="settings_lead_title">Pandangan ke depan</string>
+    <plurals name="settings_lead_value">
+        <item quantity="other">%d kata</item>
+    </plurals>
+    <string name="settings_lead_hint">Seberapa jauh teks berjalan mendahului yang dikenali saat Anda berbicara</string>
+    <string name="settings_highlight_title">Sorot kata berikutnya</string>
+    <string name="settings_highlight_hint">Jika tidak, hanya baris saat ini yang ditandai</string>
+    <string name="settings_hotwords_title">Perkuat kata dalam naskah</string>
+    <string name="settings_hotwords_hint">Lebih baik untuk kata langka. Berlaku saat aplikasi dimulai berikutnya</string>
+
+    <string name="settings_section_text">Teks</string>
+    <string name="settings_phrase_title">Satu frasa per baris</string>
+    <string name="settings_phrase_hint">Pecah teks menjadi frasa yang bisa diucapkan dalam satu napas</string>
+    <string name="settings_max_words_title">Kata per baris</string>
+    <string name="settings_max_words_value">hingga %1$d</string>
+    <string name="settings_font_title">Ukuran teks</string>
+
+    <string name="settings_section_tile">Tile Pengaturan Cepat</string>
+    <string name="settings_tile_hint">Tarik bayangan notifikasi ke bawah dan ketuk “Suflyor” — jendela dengan naskah saat ini muncul di atas aplikasi yang terbuka. Ketuk lagi untuk berhenti.</string>
+    <string name="settings_tile_add">Tambahkan tile ke Pengaturan Cepat</string>
+    <string name="settings_tile_manual">Tarik bayangan notifikasi sampai penuh → ✎ (ubah) → seret tile “Suflyor” ke atas.</string>
+    <string name="settings_tile_added">Tile ditambahkan ke Pengaturan Cepat</string>
+    <string name="settings_tile_already_added">Tile sudah ada di Pengaturan Cepat</string>
+
+    <string name="settings_section_keys">Remote dan tombol</string>
+    <string name="settings_keys_title">Kendalikan dengan tombol</string>
+    <string name="settings_keys_hint">Volume, remote Bluetooth, cincin, keyboard: di jendela atas kamera dan di prompter layar penuh</string>
+    <string name="settings_volume_keys_title">Tombol volume juga</string>
+    <string name="settings_volume_keys_hint">Matikan jika remote Anda memulai perekaman kamera dengan tombol volume</string>
+    <string name="settings_key_waiting">Tekan tombol pada remote…</string>
+    <string name="settings_key_none">belum ditetapkan</string>
+    <string name="settings_key_assign">Tetapkan</string>
+    <string name="settings_keys_reset">Kembalikan tombol ke bawaan</string>
+
+    <string name="settings_section_overlay">Jendela di atas kamera</string>
+    <string name="settings_rotate_title">Putar untuk perekaman lanskap</string>
+    <string name="settings_rotate_hint">Ponsel miring ke samping — teks pindah ke sebelah lensa dan berputar</string>
+    <string name="settings_lines_title">Baris di jendela</string>
+    <string name="settings_margin_start_title">Margin teks kiri</string>
+    <string name="settings_margin_end_title">Margin teks kanan</string>
+    <string name="settings_opacity_title">Opasitas latar</string>
+    <string name="settings_opacity_hint">Lebih rendah memungkinkan Anda melihat diri sendiri melalui jendela</string>
+    <string name="settings_diag_title">Diagnostik di jendela</string>
+    <string name="settings_diag_hint">Apa yang didengar Suflyor dan siapa lagi yang merekam audio</string>
+
+    <string name="settings_section_autoscroll">Gulir tanpa suara</string>
+    <string name="settings_wpm_title">Kecepatan</string>
+    <string name="settings_wpm_hint">Kata per menit: untuk gulir otomatis dan perkiraan durasi</string>
+    <string name="settings_countdown_title">Hitung mundur sebelum mulai</string>
+    <string name="settings_countdown_off">mati</string>
+    <string name="settings_countdown_value">%1$d dtk</string>
+    <string name="settings_countdown_hint" tools:ignore="TypographyDashes">3-2-1 sebelum gulir otomatis dimulai</string>
+
+    <string name="settings_section_mic">Mikrofon</string>
+    <string name="settings_audio_source">Sumber audio</string>
+    <string name="settings_source_speech">Ucapan</string>
+    <string name="settings_source_standard">Standar</string>
+    <string name="settings_source_raw">Mentah</string>
+    <string name="settings_sample_rate">Laju sampel</string>
+    <string name="settings_rate_khz">%1$d kHz</string>
+
+    <string name="settings_section_about">Tentang</string>
+    <string name="settings_language_title">Bahasa aplikasi</string>
+    <string name="settings_language_value">Bahasa Indonesia</string>
+    <string name="settings_log_hint">Apa yang terjadi dengan mikrofon dan pengenalan suara</string>
+    <string name="settings_about_version">Suflyor %1$s · pengenalan suara: sherpa-onnx; model: alphacep (Rusia), icefall LibriSpeech (Inggris), Apache-2.0</string>
+    <string name="rehearsal_status_error">galat, lihat di bawah</string>
+    <string name="rehearsal_status_sound">saat Anda bicara · %1$d kpm</string>
+    <string name="library_save_failed">Naskah tidak bisa disimpan: %1$s</string>
+    <string name="script_copy_title">%1$s (salinan)</string>
+    <string name="script_cd_share">Bagikan teks</string>
+    <string name="script_cd_duplicate">Gandakan</string>
+    <string name="script_share_title">Kirim naskah</string>
+    <string name="backup_saved">Naskah disimpan ke arsip: %1$d</string>
+    <string name="backup_failed">Arsip tidak bisa disimpan: %1$s</string>
+    <string name="backup_restored">Naskah dipulihkan: %1$d.</string>
+    <string name="backup_skipped">Dilewati (kosong atau terlalu panjang): %1$d.</string>
+    <string name="settings_section_fullscreen">Prompter layar penuh</string>
+    <string name="settings_mirror_title">Teks cermin</string>
+    <string name="settings_section_scripts">Naskah</string>
+    <string name="settings_backup_title">Simpan semua naskah</string>
+    <string name="settings_backup_hint">Zip berisi satu berkas Markdown per naskah: untuk ponsel baru atau pemasangan ulang</string>
+    <string name="settings_restore_title">Pulihkan dari arsip</string>
+    <string name="settings_restore_hint">Menambahkan naskah dari zip tersebut; naskah yang sudah ada tetap</string>
+    <string name="settings_link_site">Situs web</string>
+    <string name="settings_link_code">Kode sumber</string>
+    <string name="settings_link_issue">Laporkan masalah</string>
+    <string name="settings_link_issue_hint">Di GitHub; lampirkan log dari Pengaturan, Tentang, Log, Bagikan</string>
+    <string name="settings_link_donate">Dukung proyek ini</string>
+    <string name="settings_link_donate_hint">Boosty, kripto: donasi membiayai bahasa baru dan ponsel uji</string>
+    <string name="settings_about_license">Perangkat lunak bebas berlisensi GPL-3.0, tanpa garansi.</string>
+    <string name="editor_stats">%1$s · ≈%2$s pada %3$d kpm</string>
+    <string name="journal_crash_title">Proses terakhir berakhir dengan crash</string>
+    <string name="journal_crash_hint">Laporan disimpan di ponsel ini. Ucapan yang dikenali, nama aplikasi, dan judul naskah tidak termasuk di dalamnya.</string>
+    <string name="journal_crash_share">Bagikan laporan</string>
+    <string name="settings_section_advanced">Untuk pengguna lanjutan</string>
+    <string name="settings_sum_ready_all">Semua sudah siap</string>
+    <string name="settings_sum_ready_part">Selesai %1$d dari %2$d: ketuk untuk menyelesaikan</string>
+    <string name="settings_sum_overlay">Baris: %1$d · teks %2$d · latar %3$d%%</string>
+    <string name="settings_sum_fullscreen">Teks %1$d · cermin: %2$s</string>
+    <string name="settings_sum_voice">Bahasa ucapan: %1$s</string>
+    <string name="settings_sum_timed">%1$d kpm · hitung mundur: %2$s</string>
+    <string name="settings_sum_text_phrases">Frasa hingga %1$d kata</string>
+    <string name="settings_sum_text_paragraphs">Paragraf seperti di teks</string>
+    <string name="settings_sum_keys_on">Aktif</string>
+    <string name="settings_sum_keys_off">Mati</string>
+    <string name="settings_sum_scripts">Simpan semua ke arsip atau pulihkan</string>
+    <string name="settings_sum_advanced">Sumber dan laju mikrofon, baris diagnostik</string>
+    <string name="settings_sum_about">Versi %1$s · log · tautan</string>
+    <string name="settings_overlay_page_hint">Pengaturan yang sama bisa diubah langsung di atas kamera dengan tombol Aa di jendela.</string>
+    <string name="settings_fullscreen_page_hint">Layar latihan: untuk berlatih, atau untuk ponsel di bawah kaca teleprompter. Pengaturan yang sama ada di Tampilan pada layar latihan.</string>
+    <string name="settings_mirror_pick_hint">Pilih yang membuat teks terbaca benar di kaca.</string>
+    <string name="settings_speech_lang_default_title">Bahasa ucapan bawaan</string>
+    <string name="settings_speech_lang_default_hint">Untuk naskah yang bahasanya belum dipilih di layar naskah.</string>
+    <string name="settings_timed_page_hint">Untuk mode Kecepatan dan Bunyi serta perkiraan durasi. Kecepatan juga bisa diubah di layar naskah dan di jendela.</string>
+    <string name="settings_scripts_page_hint">Hal yang sama ada di menu ⋮ pada daftar naskah.</string>
+    <string name="mirror_off">Mati</string>
+    <string name="mirror_horizontal">Horizontal</string>
+    <string name="mirror_vertical">Vertikal</string>
+    <string name="mirror_both">Keduanya</string>
+    <string name="speed_value">%1$d kpm</string>
+    <string name="script_lang_chip">Ucapan: %1$s</string>
+    <string name="script_lang_sheet_title">Bahasa ucapan naskah ini</string>
+    <string name="script_lang_sheet_hint">Model suara bahasa ini yang mendengarkan, dan kata-kata dicocokkan serta dihitung menurut aturannya.</string>
+    <string name="script_lang_follow">Sesuai Pengaturan (sekarang %1$s)</string>
+    <string name="script_speed_sheet_title">Kecepatan tanpa suara</string>
+    <string name="script_speed_sheet_hint">Untuk mode Kecepatan dan Bunyi serta perkiraan durasi.</string>
+    <string name="library_cd_menu">Lainnya</string>
+    <string name="library_add_archive">Dari cadangan</string>
+    <string name="library_add_archive_hint">Zip yang disimpan dengan Simpan semua naskah</string>
+    <string name="rehearsal_view">Tampilan</string>
+    <string name="rehearsal_hide_controls">Sembunyikan kontrol</string>
+    <string name="rehearsal_show_controls">Tampilkan kontrol</string>
+    <string name="scroll_mode_voice">Suara</string>
+    <string name="scroll_mode_auto">Kecepatan</string>
+    <string name="scroll_mode_sound">Bunyi</string>
+    <string name="speed_unit">kata per menit</string>
+
+    <!-- Paket suara -->
+    <string name="settings_packs_title">Bahasa ucapan</string>
+    <string name="settings_packs_hint">Rusia, Inggris, dan Turki sudah tersedia di dalam aplikasi. Bahasa lain diunduh sekali saja: peramban menyimpan paketnya, lalu ketuk “Pasang paket yang diunduh” dan pilih berkasnya, atau buka dengan Suflyor dari unduhan. Suflyor sendiri tidak punya akses internet.</string>
+    <string name="settings_pack_installed">Terpasang · %1$s</string>
+    <string name="settings_pack_not_installed">Belum terpasang · unduhan %1$s</string>
+    <string name="settings_pack_update">Versi baru · unduhan %1$s</string>
+    <string name="settings_pack_download">Unduh</string>
+    <string name="settings_pack_delete">Hapus</string>
+    <string name="settings_pack_install_file">Pasang paket yang diunduh</string>
+    <string name="settings_pack_installing">Memasang paket… %1$s</string>
+    <string name="script_lang_pack_missing">perlu diunduh</string>
+    <string name="pack_installed">%1$s terpasang</string>
+    <string name="pack_unknown_file">Berkas ini bukan paket suara Suflyor, atau unduhannya belum lengkap. Unduh lagi.</string>
+    <string name="pack_no_space">Ruang tidak cukup: paket memerlukan %1$s</string>
+    <string name="pack_failed">Paket tidak bisa dipasang: %1$s</string>
+    <string name="pack_deleted">%1$s dihapus</string>
+    <string name="settings_packs_hint_lite">Versi lite ini tidak memiliki model suara di dalamnya. Unduh paket bahasa yang Anda baca, sekali saja: peramban menyimpannya, lalu ketuk “Pasang paket yang diunduh” dan pilih berkasnya, atau buka dengan Suflyor dari unduhan. Suflyor sendiri tidak punya akses internet.</string>
+    <string name="settings_ready_pack_hint">Versi lite memerlukan paket suara bahasa Anda</string>
+    <string name="library_setup_progress_lite" tools:ignore="PluralsCandidate">%1$d dari %2$d selesai: perlu mikrofon, layanan Suflyor, dan paket suara</string>
+</resources>

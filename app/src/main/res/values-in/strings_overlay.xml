@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Jendela melayang, tile Pengaturan Cepat, notifikasi sesi, galat mikrofon, nama tombol. -->
+<resources>
+    <string name="overlay_cd_lock">Kunci: sentuhan diteruskan ke kamera</string>
+    <string name="overlay_cd_close">Tutup</string>
+    <string name="overlay_cd_unlock">Buka kunci jendela</string>
+
+    <!-- Berbagi baris dengan delapan tombol: usahakan sekitar 10 karakter. -->
+    <string name="overlay_status_starting">memulai…</string>
+    <string name="overlay_status_stopped">berhenti</string>
+    <string name="overlay_status_paused">jeda</string>
+    <string name="overlay_status_auto">kecepatan</string>
+    <string name="overlay_status_mic_busy">mik dipakai</string>
+    <string name="overlay_status_cant_hear">tak terdengar</string>
+    <string name="overlay_status_listening">mendengar</string>
+
+    <string name="overlay_toast_closed_a11y_off">Jendela Suflyor ditutup: layanan aksesibilitas dimatikan</string>
+
+    <string name="tile_label">Suflyor</string>
+    <string name="tile_subtitle_listening">Mendengarkan</string>
+
+    <string name="notification_channel_session">Suflyor berjalan</string>
+    <string name="notification_session_title">Suflyor sedang mendengarkan</string>
+    <string name="notification_session_text">Jendela melayang aktif</string>
+    <string name="notification_action_stop">Berhenti</string>
+
+    <string name="session_error_asr_failed">Pengenalan suara gagal dimuat: %1$s</string>
+    <string name="session_error_rate_unsupported">Mikrofon tidak mendukung %1$d Hz</string>
+    <string name="session_error_recorder_create">AudioRecord tidak bisa dibuat: %1$s</string>
+    <string name="session_error_recorder_init">AudioRecord tidak terinisialisasi (tidak ada izin mikrofon?)</string>
+    <string name="session_error_record_start">Perekaman tidak bisa dimulai: %1$s</string>
+    <string name="session_error_mic_busy">Android tidak mau memulai perekaman — aplikasi lain sedang memakai mikrofon</string>
+    <string name="session_error_mic_read">Galat membaca mikrofon: %1$d</string>
+
+    <string name="key_name_volume_up">Volume +</string>
+    <string name="key_name_volume_down">Volume −</string>
+    <string name="key_name_space">Spasi</string>
+    <string name="key_name_dpad_center">Tengah D-pad</string>
+    <string name="key_name_next_track">Lagu berikutnya</string>
+    <string name="key_name_previous_track">Lagu sebelumnya</string>
+    <string name="key_name_headset">Tombol headset</string>
+    <string name="key_name_fast_forward">Maju cepat</string>
+    <string name="key_name_rewind">Mundur</string>
+    <string name="key_name_gamepad_a">Gamepad A</string>
+    <string name="overlay_status_error">galat</string>
+    <string name="overlay_status_sound">via bunyi</string>
+    <string name="overlay_cd_tune">Ukuran teks, baris, latar, kecepatan</string>
+    <string name="overlay_tune_font">Teks</string>
+    <string name="overlay_tune_lines">Baris</string>
+    <string name="overlay_tune_background">Latar</string>
+    <string name="overlay_tune_speed">Kecepatan</string>
+    <string name="overlay_tune_margin_start">Kiri</string>
+    <string name="overlay_tune_margin_end">Kanan</string>
+
+    <string name="session_error_pack_missing">Paket suara diperlukan untuk %1$s: Pengaturan → Mengikuti suara → Bahasa ucapan</string>
+</resources>

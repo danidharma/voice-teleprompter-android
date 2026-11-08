@@ -2,6 +2,10 @@
 
 All notable changes to Suflyor. Versions follow `versionName` in `app/build.gradle.kts`; each release's notes are taken from its section here.
 
+## Unreleased
+
+- **Interface in Indonesian** (Bahasa Indonesia). It follows the phone's language, and on Android 13 and newer it can be picked in Settings → About → App language.
+
 ## 0.11 — 2026-11-04
 
 - **Speech packs: Hebrew, Korean and Chinese.** Hebrew (119 MB) is followed word by word, with or without one-letter prefixes ("ו", "ה", "ב"...), and the line marker stands on the right of right-to-left text. Korean (123 MB) and Chinese (27 MB) recognizers print no spaces, so Suflyor follows them character by character and treats characters that sound alike as a match (Chinese by their Mandarin reading, Korean by the letters of the syllable).
